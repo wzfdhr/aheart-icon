@@ -1,5 +1,5 @@
 {
-  "name": "@salmon-ui/icons",
+  "name": "@aheart-icon/icons",
   "version": "1.1.8",
   "description": "A tree-shakeable Vue 3 icon library",
   "scripts": {
