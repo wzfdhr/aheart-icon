@@ -30,7 +30,7 @@ const generateSfc = async (file: string) => {
   const templateTag = `<template>\n${content}\n</template>`
   const scriptTag = `<script lang="ts">\nimport { defineComponent } from 'vue'\nexport default defineComponent({ name: "${componentName}" })\n</script>`
 
-  writeFile(
+  await writeFile(
     path.resolve(sfcPath, `${baseName}.vue`),
     `${templateTag}\n${scriptTag}`,
     'utf-8'

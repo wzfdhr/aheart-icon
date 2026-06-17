@@ -4,6 +4,7 @@ export const rootPath = path.resolve(__dirname, '../')
 export const iconsPath = path.resolve(rootPath, 'icons')
 export const sfcPath = path.resolve(rootPath, 'packages')
 export const distPath = path.resolve(rootPath, 'dist')
+export const docsPath = path.resolve(rootPath, 'docs')
 
 /**
  * Get the PascalCased name from a kebab-cased filename

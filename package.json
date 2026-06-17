@@ -1,17 +1,19 @@
 {
-  "name": "@aheart-icon/icons",
+  "name": "@wzfdhr/aheart-icon",
   "version": "1.1.8",
-  "description": "A tree-shakeable Vue 3 icon library",
+  "description": "A tree-shakeable Vue 3 icon library with a searchable gallery",
   "scripts": {
-    "svgo": "npx svgo -f ./icons -o ./icons",
+    "svgo": "svgo -f ./icons -o ./icons",
     "generate:sfc": "npm run svgo && esno scripts/generate.ts",
+    "docs:build": "esno scripts/generate-gallery.ts",
     "build:sfc": "esno scripts/build.ts",
     "build:types": "vue-tsc --declaration --emitDeclarationOnly",
-    "build": "npm run generate:sfc && npm run build:sfc && npm run build:types"
+    "build": "npm run generate:sfc && npm run build:sfc && npm run build:types",
+    "prepack": "npm run build"
   },
   "repository": {
     "type": "git",
-    "url": "https://gitee.com/wzfdhr/aheart-icon"
+    "url": "https://github.com/wzfdhr/aheart-icon.git"
   },
   "keywords": [
     "vue",
@@ -22,9 +24,20 @@
   "files": [
     "dist"
   ],
+  "homepage": "https://wzfdhr.github.io/aheart-icon/",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
-  "types": "dist/types",
+  "types": "dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "peerDependencies": {
     "vue": "^3.2.0"
   },
@@ -42,7 +55,8 @@
     "svgo": "^2.8.0",
     "typescript": "^4.6.4",
     "unplugin-vue": "^2.1.0",
+    "vite": "^2.9.18",
     "vue": "^3.2.36",
-    "vue-tsc": "^0.34.16"
+    "vue-tsc": "^0.35.2"
   }
 }

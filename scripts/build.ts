@@ -20,7 +20,7 @@ const getBuildOptions = (format: Format) => {
     entryPoints: [path.resolve(sfcPath, 'index.ts')],
     target: 'es2018',
     platform: 'neutral',
-    plugins: [vue()],
+    plugins: [vue({ sourceMap: false })],
     bundle: true,
     format
   }
@@ -43,19 +43,19 @@ const buildBundle = async (minify: boolean) => {
       ...getBuildOptions('esm'),
       outfile: path.resolve(distPath, `index${minify ? '.min' : ''}.mjs`),
       minify,
-      sourcemap: minify
+      sourcemap: false
     }),
     build({
       ...getBuildOptions('iife'),
       outfile: path.resolve(distPath, `index.iife${minify ? '.min' : ''}.js`),
       minify,
-      sourcemap: minify
+      sourcemap: false
     }),
     build({
       ...getBuildOptions('cjs'),
       outfile: path.resolve(distPath, `index${minify ? '.min' : ''}.js`),
       minify,
-      sourcemap: minify
+      sourcemap: false
     })
   ])
 }
